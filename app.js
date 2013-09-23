@@ -124,6 +124,7 @@ io.sockets.on('connection', function (socket) {
 });
 
 floodLightsSwitch = gpio.export(22, {
+    direction: 'in',
     ready: function() {
         floodLightsSwitch.on("change", function(val) {
             if(val === 1)
@@ -143,6 +144,7 @@ floodLightsSwitch = gpio.export(22, {
 });
 
 lightsSwitch = gpio.export(23, {
+    direction: 'in',
     ready: function() {
         lightsSwitch.on("change", function(val) {
             if(val === 1)
