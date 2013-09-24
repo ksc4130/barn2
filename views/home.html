@@ -15,6 +15,7 @@
 <article id="content" style="display: none;" class="container">
     <div class="row">
         <!-- ko foreach: barn -->
+        <!-- ko if: type: light -->
         <div style="margin-bottom: 10px;" data-bind="click: toggle" class="col-sm-6 col-md-3 col-lg-2">
             <div class="btn btn-primary btn-block" style="min-height: 210px;">
                 <h3 class="text-center" data-bind="text: name"></h3>
@@ -25,11 +26,15 @@
                 <img style="display: block; margin-left: auto; margin-right: auto;" class="img-responsive" src="/images/light_bulb_off.png">
                 <!-- /ko -->
             </div>
-            <!--<div class="btn-group">-->
-            <!--<button data-bind="click: toggle, css: {'btn-primary': isOn, 'btn-default': isOff}" type="button" class="btn">On</button>-->
-            <!--<button data-bind="click: toggle, css: {'btn-primary': isOff, 'btn-default': isOn}" type="button" class="btn">Off</button>-->
-            <!--</div>-->
         </div>
+        <!-- /ko -->
+        <!-- ko if: type: motion -->
+        <div style="margin-bottom: 10px;" class="col-sm-6 col-md-3 col-lg-2">
+            <div class="btn btn-block" data-bind="css: { 'btn-success': isOn }" style="min-height: 210px;">
+                <h3 class="text-center" data-bind="text: name"></h3>
+            </div>
+        </div>
+        <!-- /ko -->
         <!-- /ko -->
     </div>
 </article>

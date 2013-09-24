@@ -81,19 +81,19 @@ var device = function (pin, args) {
 
 var barn = [
     device(27, {
-        name: 'Lights'
+        name: 'Lights',
+        type: 'light'
     }),
     device(17, {
-        name: 'Flood Lights'
+        name: 'Flood Lights',
+        type: 'light'
+    }),
+    device(24, {
+        name: 'Motion',
+        type: 'motion',
+        direction: 'in'
     })
 ];
-
-var floodLights = gpio.export(17, {
-    direction: 'out',
-    interval: 200,
-    ready: function() {
-    }
-});
 
 var io = require('socket.io').listen(server);
 
