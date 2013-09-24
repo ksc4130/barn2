@@ -73,6 +73,9 @@ var device = function (pin, args) {
         ready: function() {
             devices[pin.toString()].on("change", function(val) {
                 self.state = val;
+                if(self.direction === 'in') {
+                    io.sockets.emit('change', {id: self.id, state: val});
+                }
             });
         }
     });
