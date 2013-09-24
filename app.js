@@ -64,6 +64,7 @@ var device = function (pin, args) {
     self.id = pin;
     self.name = args.name || 'unknown';
     self.state = args.state || 0;
+    self.type = args.type || 'light';
     self.direction = args.direction || 'out';
 
     devices[pin.toString()] = gpio.export(pin, {

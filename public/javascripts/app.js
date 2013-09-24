@@ -9,7 +9,7 @@ var device = function (args) {
     self.id = args.id;
     self.name = args.name || 'unknown';
     self.state = ko.observable(args.state || 0);
-    self.type = args.name || 'light';
+    self.type = args.type || 'light';
 
     self.isOn = ko.computed(function () {
         return self.state() === 1;
