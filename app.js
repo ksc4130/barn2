@@ -8,6 +8,10 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var cookie  = require('cookie');
+var connect = require('connect');
+var secret = 'Askindl23@146Fscmaijnd523CXVWGN#63@#7efbsd23#$Rb';
+
 
 var app = express();
 
@@ -19,9 +23,8 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
-app.use(express.session());
-app.use(app.router);
+app.use(express.cookieParser());
+app.use(express.session({secret: secret, key: 'express.sid'}));app.use(app.router);
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -99,17 +102,46 @@ var barn = [
     })
 ];
 
+var sessionobj = {};
 var io = require('socket.io').listen(server);
 
+io.set('authorization', function (handshakeData, accept) {
+
+    if (handshakeData.headers.cookie) {
+
+        handshakeData.cookie = cookie.parse(handshakeData.headers.cookie);
+
+        handshakeData.sessionID = connect.utils.parseSignedCookie(handshakeData.cookie['express.sid'], secret);
+
+        if (handshakeData.cookie['express.sid'] == handshakeData.sessionID) {
+            return accept('Cookie is invalid.', false);
+        }
+
+    } else {
+        return accept('No cookie transmitted.', false);
+    }
+
+    accept(null, true);
+});
 io.sockets.on('connection', function (socket) {
-    var yup = false;
-    socket.emit('yup', false);
+    var sessId = sessionobj[cookie.parse(socket.handshake.sessionID)];
+    var yup = sessionobj[sessId];
+
+    if(yup)
+        socket.emit('init', barn);
+    else
+        socket.emit('yup', false);
+
     socket.on('yup', function (data) {
-        yup = (data === pin);
-        if(yup)
+        data = data || {};
+        yup = (data.pin === pin);
+        if(yup) {
+            sessionobj[sessId] = data.remember;
             socket.emit('init', barn);
-        else
+        } else {
+            sessionobj[sessId] = false;
             socket.emit('yup', false);
+        }
     });
     socket.on('change', function (data) {
         if(!yup) {
