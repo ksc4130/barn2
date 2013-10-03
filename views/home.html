@@ -42,13 +42,18 @@
 <div id="yup" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Pin</h4>
-            </div>
-            <div class="modal-body">
-                <input type="password" data-bind="value: pin">
-            </div>
+            <form role="form">
+                <div class="form-group">
+                    <label>Pin: </label>
+                    <input type="password" data-bind="value: pin">
+                </div>
+                <br>
+                <div class="checkbox">
+                    <label>
+                        &nbsp;<input type="checkbox" data-bind="checked: remember"> Remember
+                    </label>
+                </div>
+            </form>
             <div class="modal-footer">
                 <button data-bind="click: yup" type="button" class="btn btn-primary">Ok</button>
             </div>
