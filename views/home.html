@@ -16,20 +16,26 @@
     <div class="row">
         <!-- ko foreach: barn -->
         <!-- ko if: type === 'light' -->
-        <div style="margin-bottom: 10px;" data-bind="click: toggle" class="col-sm-6 col-md-3 col-lg-2">
-            <div class="btn btn-primary btn-block" style="min-height: 210px;">
-                <h3 class="text-center" data-bind="text: name"></h3>
-                <!-- ko if: isOn -->
-                <img style="display: block; margin-left: auto; margin-right: auto;" class="img-responsive" src="/images/light_bulb_on.png">
-                <!-- /ko -->
-                <!-- ko ifnot: isOn -->
-                <img style="display: block; margin-left: auto; margin-right: auto;" class="img-responsive" src="/images/light_bulb_off.png">
-                <!-- /ko -->
+        <!-- ko if: actionType === 'onoff' -->
+        <div style="margin-bottom: 10px;" data-bind="click: toggle" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+            <div class="btn btn-primary btn-block">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                        <!-- ko if: isOn -->
+                        <img style="display: block; margin-left: auto; margin-right: auto;" class="img-responsive" src="/images/light_bulb_on.png">
+                        <!-- /ko -->
+                        <!-- ko ifnot: isOn -->
+                        <img style="display: block; margin-left: auto; margin-right: auto;" class="img-responsive" src="/images/light_bulb_off.png">
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <p style="margin-top: .5em; margin-bottom: -.25em;" class="text-center" data-bind="text: name"></p>
             </div>
         </div>
         <!-- /ko -->
+        <!-- /ko -->
         <!-- ko if: type === 'motion' -->
-        <div style="margin-bottom: 10px;" class="col-sm-6 col-md-3 col-lg-2">
+        <div style="margin-bottom: 10px;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
             <div class="btn btn-block" data-bind="css: { 'btn-success': isOn, 'btn-primary': isOff }" style="min-height: 210px;">
                 <h3 class="text-center" data-bind="text: name"></h3>
             </div>
