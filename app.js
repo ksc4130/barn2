@@ -127,7 +127,7 @@ io.sockets.on('connection', function (socket) {
     var sessId = sessionobj[cookie.parse(socket.handshake.sessionID)];
     var yup = sessionobj[sessId];
 
-    if(yup)
+    if(yup === true)
         socket.emit('init', barn);
     else
         socket.emit('yup', false);
@@ -135,7 +135,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('yup', function (data) {
         data = data || {};
         yup = (data.pin === pin);
-        if(yup) {
+        if(yup === true) {
             sessionobj[sessId] = data.remember;
             socket.emit('init', barn);
         } else {
@@ -144,7 +144,7 @@ io.sockets.on('connection', function (socket) {
         }
     });
     socket.on('change', function (data) {
-        if(!yup) {
+        if(yup === false) {
             socket.emit('yup', false);
             return;
         }
