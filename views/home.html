@@ -20,28 +20,34 @@
             <!-- ko if: type === 'light' -->
             <!-- ko if: actionType === 'onoff' -->
             <div class="tile-btn bg-blue">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-                        <!-- ko if: isOn -->
-                        <img style="display: block; margin-left: auto; margin-right: auto;" class="img-responsive" src="/images/light_bulb_on.png">
-                        <!-- /ko -->
-                        <!-- ko ifnot: isOn -->
-                        <img style="display: block; margin-left: auto; margin-right: auto;" class="img-responsive" src="/images/light_bulb_off.png">
-                        <!-- /ko -->
+                <div class="tile-content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                            <!-- ko if: isOn -->
+                            <img style="display: block; margin-left: auto; margin-right: auto;" class="img-responsive" src="/images/light_bulb_on.png">
+                            <!-- /ko -->
+                            <!-- ko ifnot: isOn -->
+                            <img style="display: block; margin-left: auto; margin-right: auto;" class="img-responsive" src="/images/light_bulb_off.png">
+                            <!-- /ko -->
+                        </div>
                     </div>
+                    <p style="margin-top: .5em; margin-bottom: -.25em;" class="text-center" data-bind="text: name"></p>
+
                 </div>
-                <p style="margin-top: .5em; margin-bottom: -.25em;" class="text-center" data-bind="text: name"></p>
             </div>
             <!-- /ko -->
             <!-- /ko -->
             <!-- ko if: type === 'motion' -->
             <div class="tile" data-bind="css: { 'bg-green': isOn}">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-                        <img style="display: block; margin-left: auto; margin-right: auto; visibility: hidden;" class="img-responsive" src="/images/light_bulb_on.png">
+                <div class="tile-content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                            <img style="display: block; margin-left: auto; margin-right: auto; visibility: hidden;" class="img-responsive" src="/images/light_bulb_on.png">
+                        </div>
                     </div>
+                    <p style="margin-top: .5em; margin-bottom: -.25em;" class="text-center" data-bind="text: name"></p>
+
                 </div>
-                <p style="margin-top: .5em; margin-bottom: -.25em;" class="text-center" data-bind="text: name"></p>
             </div>
             <!-- /ko -->
         </div>
