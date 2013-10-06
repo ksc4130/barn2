@@ -16,9 +16,9 @@
 <body>
 <article id="content" style="display: none;" class="container">
     <div class="row">
-        <!-- ko foreach: barn -->
-        <!-- ko if: type === 'light' -->
-        <!-- ko if: actionType === 'onoff' -->
+        <div data-bind="foreach: barn" class="col-md-12">
+            <!-- ko if: type === 'light' -->
+            <!-- ko if: actionType === 'onoff' -->
             <div class="tile-btn bg-blue">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
@@ -32,9 +32,9 @@
                 </div>
                 <p style="margin-top: .5em; margin-bottom: -.25em;" class="text-center" data-bind="text: name"></p>
             </div>
-        <!-- /ko -->
-        <!-- /ko -->
-        <!-- ko if: type === 'motion' -->
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: type === 'motion' -->
             <div class="tile" data-bind="css: { 'bg-green': isOn}">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
@@ -46,7 +46,7 @@
         </div>
         <!-- /ko -->
         <!-- /ko -->
-        <!-- /ko -->
+        </div>
 </article>
 
 <div id="yup" class="modal fade">
