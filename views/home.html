@@ -4,7 +4,9 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="/stylesheets/css/bootstrap.min.css" media="screen" />
+    <link rel="stylesheet" href="/stylesheets/css/bootstrap.min.css" media="screen" >
+    <link rel="stylesheet" href="/stylesheets/mere-css/tiles.css">
+    <link rel="stylesheet" href="/stylesheets/mere-css/colors.css">
     <style>
         body {
             padding-top: 40px;
@@ -18,7 +20,7 @@
         <!-- ko if: type === 'light' -->
         <!-- ko if: actionType === 'onoff' -->
         <div style="margin-bottom: 10px;" data-bind="click: toggle" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-            <div class="btn btn-primary btn-block">
+            <div class="tile-btn bg-blue">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
                         <!-- ko if: isOn -->
@@ -36,7 +38,7 @@
         <!-- /ko -->
         <!-- ko if: type === 'motion' -->
         <div style="margin-bottom: 10px;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-            <div class="btn btn-block" data-bind="css: { 'btn-success': isOn, 'btn-primary': isOff }">
+            <div class="tile" data-bind="css: { 'bg-green': isOn}">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
                         <img style="display: block; margin-left: auto; margin-right: auto; visibility: hidden;" class="img-responsive" src="/images/light_bulb_on.png">
