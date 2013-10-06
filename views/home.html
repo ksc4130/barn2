@@ -19,7 +19,6 @@
         <!-- ko foreach: barn -->
         <!-- ko if: type === 'light' -->
         <!-- ko if: actionType === 'onoff' -->
-        <div style="margin-bottom: 10px;" data-bind="click: toggle" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
             <div class="tile-btn bg-blue">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
@@ -33,11 +32,9 @@
                 </div>
                 <p style="margin-top: .5em; margin-bottom: -.25em;" class="text-center" data-bind="text: name"></p>
             </div>
-        </div>
         <!-- /ko -->
         <!-- /ko -->
         <!-- ko if: type === 'motion' -->
-        <div style="margin-bottom: 10px;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
             <div class="tile" data-bind="css: { 'bg-green': isOn}">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
@@ -49,7 +46,6 @@
         </div>
         <!-- /ko -->
         <!-- /ko -->
-    </div>
 </article>
 
 <div id="yup" class="modal fade">
