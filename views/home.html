@@ -19,7 +19,7 @@
         <div data-bind="foreach: barn" class="col-md-12">
             <!-- ko if: type === 'light' -->
             <!-- ko if: actionType === 'onoff' -->
-            <div class="tile-btn bg-blue">
+            <div data-bind="click: toggle" class="tile-btn bg-blue">
                 <div class="tile-content">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
